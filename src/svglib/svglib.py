@@ -1159,7 +1159,7 @@ def svg2rlg(path):
     
     # unzip .svgz file into .svg
     unzipped = False
-    if os.path.splitext(path)[1].lower() == ".svgz":
+    if isinstance(path, basestring) and os.path.splitext(path)[1].lower() == ".svgz":
         data = gzip.GzipFile(path, "rb").read()
         open(path[:-1], 'w').write(data)
         path = path[:-1]
